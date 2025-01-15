@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.Text;
+﻿using System.Text;
+using Newtonsoft.Json;
 using ZeeyoWPF.Service.Interfaces.Auth;
-using ZeeyoWPF.Service.Models;
+using ZeeyoWPF.Service.Models.LoginModels;
 
 namespace ZeeyoWPF.Service.Services.Auth;
 

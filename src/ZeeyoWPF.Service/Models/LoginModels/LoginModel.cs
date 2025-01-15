@@ -1,4 +1,4 @@
-﻿namespace ZeeyoWPF.Service.Models;
+﻿namespace ZeeyoWPF.Service.Models.LoginModels;
 
 public class LoginModel
 {

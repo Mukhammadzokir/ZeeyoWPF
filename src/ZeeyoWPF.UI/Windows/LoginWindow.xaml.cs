@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Net.Http;
-using ZeeyoWPF.Service.Models;
 using ZeeyoWPF.Service.Services.Auth;
 using ZeeyoWPF.Service.Interfaces.Auth;
+using ZeeyoWPF.Service.Models.LoginModels;
 
 namespace ZeeyoWPF.UI.Windows
 {

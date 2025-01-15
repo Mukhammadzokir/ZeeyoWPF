@@ -1,4 +1,4 @@
-﻿using ZeeyoWPF.Service.Models;
+﻿using ZeeyoWPF.Service.Models.LoginModels;
 
 namespace ZeeyoWPF.Service.Interfaces.Auth;
 

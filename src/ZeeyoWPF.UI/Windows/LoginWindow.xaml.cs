@@ -64,7 +64,9 @@ namespace ZeeyoWPF.UI.Windows
 
         private void forgerPasswordBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ForgetPasswordWindow forgetPassworWindow = new ForgetPasswordWindow();
+            forgetPassworWindow.Show();
+            this.Close();
         }
     }
 }

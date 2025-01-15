@@ -31,7 +31,7 @@
                            HorizontalAlignment="Center"
                            VerticalAlignment="Top"
                            FontWeight="Bold"
-                           Foreground="Black"
+                           Foreground="#3B82F6"
                            Padding="25"/>
 
 
@@ -76,7 +76,7 @@
                     x:Name="forgerPasswordBtn"
                     Click="forgerPasswordBtn_Click"
                     Margin="150 0 0 0"
-                    Foreground="#5766DB"
+                    Foreground="#3B82F6"
                     Background="Transparent"
                     Content="Forget password?"
                     FontSize="12"

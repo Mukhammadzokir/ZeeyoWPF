@@ -10,8 +10,8 @@ namespace ZeeyoWPF.UI.Windows
         }
         private void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
-            ResetPasswordWindow resetPasswordWindow = new ResetPasswordWindow();
-            resetPasswordWindow.Show();
+            VerifyEmailWindow verifyEmailWindow = new VerifyEmailWindow();
+            verifyEmailWindow.Show();
             this.Close(); 
         }
         private void ReturnBackButton_Click(object sender, RoutedEventArgs e)

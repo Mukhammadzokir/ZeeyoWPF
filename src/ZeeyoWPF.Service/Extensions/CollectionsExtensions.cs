@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
-using ZeeyoWPF.Service.Services.Helpers;
+using ZeeyoWPF.Service.Helpers;
 
-namespace ZeeyoWPF.Service.Services.Extensions
+namespace ZeeyoWPF.Service.Extensions
 {
     public static class CollectionExtensions
     {

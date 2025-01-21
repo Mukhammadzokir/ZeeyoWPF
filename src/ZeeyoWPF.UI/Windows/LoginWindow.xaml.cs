@@ -1,8 +1,9 @@
 ﻿using System.Windows;
 using System.Net.Http;
+using System.Windows.Controls;
+using ZeeyoWPF.Service.ViewModels;
 using ZeeyoWPF.Service.Services.Auth;
 using ZeeyoWPF.Service.Interfaces.Auth;
-using ZeeyoWPF.Service.Models.LoginModels;
 
 namespace ZeeyoWPF.UI.Windows
 {
@@ -13,11 +14,15 @@ namespace ZeeyoWPF.UI.Windows
     {
         private readonly HttpClient _httpClient;
         private readonly IAuthService _authService;
+        private readonly LoginViewModel _loginViewModel;
         public LoginWindow()
         {
             InitializeComponent();
             _httpClient = new HttpClient();
             _authService = new AuthService();
+            _loginViewModel = new LoginViewModel();
+
+            this.DataContext = _loginViewModel;
         }
 
         private void _frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
@@ -32,19 +37,29 @@ namespace ZeeyoWPF.UI.Windows
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            string phoneNumber = phoneNumberTextBox.Text;
-            string password = passwordBox.Password;
 
-            var loginModel = new LoginModel()
+            //var loginModel = new LoginModel()
+            //{
+            //    PhoneNumber = phoneNumberTextBox.Text,
+            //    Password = passwordBox.Password,
+            //};
+
+            var result = await _loginViewModel.LoginAsync();
+            if (result)
             {
-                PhoneNumber = phoneNumber,
-                Password = password
-            };
-
-            var result = await _authService.LoginAsync(loginModel);
-
+                this.Close();
+                MessageBox.Show(_loginViewModel.LoginMessage);
+                
+            }
+            
         }
-
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is LoginViewModel viewModel)
+            {
+                viewModel.Password = ((PasswordBox)sender).Password;
+            }
+        }
 
         private void ShowPassword_Checked(object sender, RoutedEventArgs e)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
 using ZeeyoWPF.Service.Interfaces.Auth;
+using ZeeyoWPF.Service.Models.Response;
 using ZeeyoWPF.Service.Models.LoginModels;
 
 namespace ZeeyoWPF.Service.Services.Auth;
@@ -13,7 +14,7 @@ public class AuthService : IAuthService
     {
         _httpClient = Extensions.CollectionExtensions.GetHttpClient();
     }
-    public async Task<LoginViewModel> LoginAsync(LoginModel loginModel)
+    public async Task<Response> LoginAsync(LoginModel loginModel)
     {
         try
         {
@@ -25,13 +26,15 @@ public class AuthService : IAuthService
             var message = await _httpClient.PostAsync($"Auth/login", content);
 
             var jsonString = await message.Content.ReadAsStringAsync();
-            var response = JsonConvert.DeserializeObject<LoginViewModel>(jsonString);
+            var response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+            var token = response.Data;
 
             return response;
         }
-        catch
+        catch(Exception ex) 
         {
-            return null;
+            throw new Exception(ex.Message);
         }
     }
 }

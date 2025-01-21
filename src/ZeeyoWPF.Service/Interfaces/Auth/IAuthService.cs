@@ -1,10 +1,11 @@
 ﻿using ZeeyoWPF.Service.Models.LoginModels;
+using ZeeyoWPF.Service.Models.Response;
 
 namespace ZeeyoWPF.Service.Interfaces.Auth;
 
 public interface IAuthService
 {
-    public Task<LoginViewModel> LoginAsync(LoginModel loginModel);
+    public Task<Response> LoginAsync(LoginModel loginModel);
 }
 
 

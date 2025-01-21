@@ -36,7 +36,8 @@
 
 
                 <!-- Phone Number TextBox with Placeholder -->
-                <TextBox Width="250"
+                <TextBox Text ="{Binding PhoneNumber}"
+                     Width="250"
                      x:Name="phoneNumberTextBox"
                      Height="30" 
                      FontSize="14" 
@@ -49,6 +50,7 @@
                 <StackPanel Margin="0,10,0,0">
                     <!-- Password Box (initially hidden) -->
                     <PasswordBox x:Name="passwordBox"
+                             PasswordChanged="PasswordBox_PasswordChanged"
                              Width="250" 
                              Height="30"
                              FontSize="14" 

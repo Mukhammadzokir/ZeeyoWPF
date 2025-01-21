@@ -1,4 +1,4 @@
-﻿namespace ZeeyoWPF.Service.Services.Helpers;
+﻿namespace ZeeyoWPF.Service.Helpers;
 
 public static class TokenHelper
 {

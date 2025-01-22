@@ -1,23 +1,16 @@
 ﻿using System.ComponentModel;
 using ZeeyoWPF.Service.Services.Auth;
 using ZeeyoWPF.Service.Models.LoginModels;
+using ZeeyoWPF.Service.ViewModels.Commons;
 
 namespace ZeeyoWPF.Service.ViewModels;
 
-public class LoginViewModel : INotifyPropertyChanged
+public class LoginViewModel : BaseViewModel
 {
     private string _password;
     private string _phoneNumber;
     private string _loginMessage;
     private readonly AuthService _authService;
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-
     public LoginViewModel()
     {
         _authService = new AuthService();

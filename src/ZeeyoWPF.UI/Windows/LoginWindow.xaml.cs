@@ -37,13 +37,6 @@ namespace ZeeyoWPF.UI.Windows
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            //var loginModel = new LoginModel()
-            //{
-            //    PhoneNumber = phoneNumberTextBox.Text,
-            //    Password = passwordBox.Password,
-            //};
-
             var result = await _loginViewModel.LoginAsync();
             if (result)
             {
@@ -51,7 +44,6 @@ namespace ZeeyoWPF.UI.Windows
                 MessageBox.Show(_loginViewModel.LoginMessage);
                 
             }
-            
         }
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {

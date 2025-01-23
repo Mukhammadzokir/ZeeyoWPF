@@ -1,6 +1,7 @@
 ﻿using ZeeyoWPF.Service.Services.Auth;
 using ZeeyoWPF.Service.Models.EmailModels;
 using ZeeyoWPF.Service.ViewModels.Commons;
+using ZeeyoWPF.Service.Properties;
 
 namespace ZeeyoWPF.Service.ViewModels;
 
@@ -50,7 +51,8 @@ public class VerifyEmailViewModel : BaseViewModel
     public async Task<bool> SendCodeByEmailAsync()
     {
         var email = Email;
-
+        Settings.Default.Email = email;
+        Settings.Default.Save();
         try
         {
             var response = await _emailService.SendCodeByEmailAsync(email);
@@ -78,7 +80,7 @@ public class VerifyEmailViewModel : BaseViewModel
         var verifyEmailModel = new VerifyEmailModel()
         {
             Code = Code,
-            Email = Email,
+            Email = Settings.Default.Email,
         };
 
         try

@@ -26,7 +26,6 @@ namespace ZeeyoWPF.UI.Windows
             var result = await _verifyEmailViewModel.SendCodeByEmailAsync();
             if (result)
             {
-                this.Close();
                 MessageBox.Show(_verifyEmailViewModel.LoginMessage);
             }
             else
@@ -36,7 +35,7 @@ namespace ZeeyoWPF.UI.Windows
 
             VerifyEmailWindow verifyEmailWindow = new VerifyEmailWindow();
             verifyEmailWindow.Show();
-            this.Close(); 
+            this.Close();
         }
         private void ReturnBackButton_Click(object sender, RoutedEventArgs e)
         {

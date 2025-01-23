@@ -1,5 +1,4 @@
-﻿using ZeeyoWPF.Service.Properties;
-using ZeeyoWPF.Service.Services.Auth;
+﻿using ZeeyoWPF.Service.Services.Auth;
 using ZeeyoWPF.Service.Models.EmailModels;
 using ZeeyoWPF.Service.ViewModels.Commons;
 
@@ -15,10 +14,6 @@ public class VerifyEmailViewModel : BaseViewModel
     public VerifyEmailViewModel()
     {
         _emailService = new EmailService();
-
-        Settings.Default.Email = _email;
-        Settings.Default.Save();
-
     }
 
     public string Code

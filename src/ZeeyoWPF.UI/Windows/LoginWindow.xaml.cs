@@ -40,10 +40,9 @@ namespace ZeeyoWPF.UI.Windows
             var result = await _loginViewModel.LoginAsync();
             if (result)
             {
-                this.Close();
                 MessageBox.Show(_loginViewModel.LoginMessage);
-                
             }
+
         }
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {

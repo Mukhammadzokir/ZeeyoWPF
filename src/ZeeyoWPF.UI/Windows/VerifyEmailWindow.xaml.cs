@@ -29,7 +29,6 @@ namespace ZeeyoWPF.UI.Windows
             var result = await _verifyEmailViewModel.VerifyCodeAsync();
             if (result)
             {
-                this.Close();
                 MessageBox.Show(_verifyEmailViewModel.LoginMessage);
 
             }

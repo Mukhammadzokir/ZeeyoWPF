@@ -9,19 +9,6 @@
         Height="500"
         Width="450">
 
-    <Window.Resources>
-         <!--Define a style for the TextBox with common properties--> 
-        <Style x:Key="VerificationTextBoxStyle" TargetType="TextBox">
-            <Setter Property="Width" Value="40"/>
-            <Setter Property="MaxLength" Value="1"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#3B82F6"/>
-        </Style>
-    </Window.Resources>
-
     <Grid Margin="20" Background="{DynamicResource MaterialDesignBackground}">
         <Button Width="40" Height="40"
                 Background="Transparent"
@@ -52,7 +39,7 @@
                     Style="{StaticResource MaterialDesignTextBlock}" />
 
   
-        <TextBox Text ="{Binding Code}"
+        <TextBox Text ="{Binding Code, Mode =TwoWay}"
                     Width="250"
                     x:Name="codeTextBox"
                     Height="30" 

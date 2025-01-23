@@ -1,5 +1,5 @@
-﻿using ZeeyoWPF.Service.Models.EmailModels;
-using ZeeyoWPF.Service.Models.Response;
+﻿using ZeeyoWPF.Service.Models.Response;
+using ZeeyoWPF.Service.Models.EmailModels;
 
 namespace ZeeyoWPF.Service.Interfaces.Auth;
 

@@ -9,19 +9,6 @@
         Height="500"
         Width="450">
 
-    <Window.Resources>
-         <!--Define a style for the TextBox with common properties--> 
-        <Style x:Key="VerificationTextBoxStyle" TargetType="TextBox">
-            <Setter Property="Width" Value="40"/>
-            <Setter Property="MaxLength" Value="1"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#3B82F6"/>
-        </Style>
-    </Window.Resources>
-
     <Grid Margin="20" Background="{DynamicResource MaterialDesignBackground}">
         <Button Width="40" Height="40"
                 Background="Transparent"
@@ -51,18 +38,15 @@
                     TextWrapping="Wrap"
                     Style="{StaticResource MaterialDesignTextBlock}" />
 
-        <StackPanel Orientation="Horizontal"
-                    Width="240"
-                    Height="50"
-                    HorizontalAlignment="Center">
-             <!--Creating input boxes for each digit--> 
-        <TextBox x:Name="TextBox1" Style="{StaticResource VerificationTextBoxStyle}" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="TextBox2" Style="{StaticResource VerificationTextBoxStyle}" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="TextBox3" Style="{StaticResource VerificationTextBoxStyle}" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="TextBox4" Style="{StaticResource VerificationTextBoxStyle}" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="TextBox5" Style="{StaticResource VerificationTextBoxStyle}" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="TextBox6" Style="{StaticResource VerificationTextBoxStyle}" TextChanged="TextBox_TextChanged"/>
-        </StackPanel>
+  
+        <TextBox Text ="{Binding Code, Mode =TwoWay}"
+                    Width="250"
+                    x:Name="codeTextBox"
+                    Height="30" 
+                    FontSize="14" 
+                    materialDesign:HintAssist.Hint="Enter the code" 
+                    Padding="5"
+                    Margin="0,10,0,0" />
 
         <Button Content="Verify"
                 Click="VeriyfBtn_Click"

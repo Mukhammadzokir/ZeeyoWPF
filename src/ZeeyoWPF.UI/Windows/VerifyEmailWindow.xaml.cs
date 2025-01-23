@@ -1,5 +1,8 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
+using System.Net.Http;
+using ZeeyoWPF.Service.ViewModels;
+using ZeeyoWPF.Service.Services.Auth;
+using ZeeyoWPF.Service.Interfaces.Auth;
 
 namespace ZeeyoWPF.UI.Windows
 {
@@ -8,38 +11,27 @@ namespace ZeeyoWPF.UI.Windows
     /// </summary>
     public partial class VerifyEmailWindow : Window
     {
+        private readonly HttpClient _httpClient;
+        private readonly IEmailService _emailService;
+        private readonly VerifyEmailViewModel _verifyEmailViewModel;
         public VerifyEmailWindow()
         {
             InitializeComponent();
-        }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox currentTextBox = sender as TextBox;
-            var parent = (StackPanel)currentTextBox.Parent;
-            int currentIndex = parent.Children.IndexOf(currentTextBox);
+            _httpClient = new HttpClient();
+            _emailService = new EmailService();
+            _verifyEmailViewModel = new VerifyEmailViewModel();
 
-            // Check if a character has been added
-            if (currentTextBox.Text.Length == 1 && currentIndex < parent.Children.Count - 1)
-            {
-                // Move focus to the next TextBox
-                var nextTextBox = parent.Children[currentIndex + 1] as TextBox;
-                nextTextBox.Focus();
-            }
-            else if (currentTextBox.Text.Length == 0)
-            {
-                // Check if backspace was pressed (removing the last character)
-                var textChange = e.Changes.FirstOrDefault();
-                if (textChange != null && textChange.RemovedLength > 0 && currentIndex > 0)
-                {
-                    // Move focus to the previous TextBox
-                    var previousTextBox = parent.Children[currentIndex - 1] as TextBox;
-                    previousTextBox.Focus();
-                }
-            }
+            this.DataContext = _verifyEmailViewModel;
         }
 
-        private void VeriyfBtn_Click(object sender, RoutedEventArgs e)
+        private async void VeriyfBtn_Click(object sender, RoutedEventArgs e)
         {
+            var result = await _verifyEmailViewModel.VerifyCodeAsync();
+            if (result)
+            {
+                MessageBox.Show(_verifyEmailViewModel.LoginMessage);
+
+            }
             ResetPasswordWindow resetPasswordWindow = new ResetPasswordWindow();
             resetPasswordWindow.Show();
             this.Close();

@@ -6,6 +6,6 @@ namespace ZeeyoWPF.Service.Interfaces.Auth;
 public interface IEmailService
 {
     public Task<Response> SendCodeByEmailAsync(string email);
-
+    public Task<Response> CheckUserAsync(string phoneNumberOrEamil);
     public Task<Response> VerifyCodeAsync(VerifyEmailModel emailModel);
 }

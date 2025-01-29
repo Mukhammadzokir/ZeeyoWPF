@@ -9,12 +9,14 @@ namespace ZeeyoWPF.UI.Windows
     public partial class ForgetPasswordWindow : Window
     {
         private readonly HttpClient _httpClient;
+        private readonly IUserService _userService;
         private readonly IEmailService _emailService;
         private readonly VerifyEmailViewModel _verifyEmailViewModel;
         public ForgetPasswordWindow()
         {
             InitializeComponent();
             _httpClient = new HttpClient();
+            _userService = new UserService();
             _emailService = new EmailService();
             _verifyEmailViewModel = new VerifyEmailViewModel();
 
@@ -23,19 +25,31 @@ namespace ZeeyoWPF.UI.Windows
 
         private async void ContinueButton_Click(object sender, RoutedEventArgs e)
         {
-            var result = await _verifyEmailViewModel.SendCodeByEmailAsync();
-            if (result)
+            var checkUser = await _verifyEmailViewModel.CheckUserAsync();
+            if (checkUser)
             {
-                MessageBox.Show(_verifyEmailViewModel.LoginMessage);
-            }
-            else
-            {
-                MessageBox.Show(_verifyEmailViewModel.LoginMessage);
-            }
+                var checkEmailOrPhoneNumber = await _verifyEmailViewModel.CheckEmailOrPhoneNumber();
+                if(checkEmailOrPhoneNumber == "email")
+                {
+                    var result = await _verifyEmailViewModel.SendCodeByEmailAsync();
+                    if (result)
+                    {
+                        MessageBox.Show(_verifyEmailViewModel.LoginMessage);
+                    }
+                    else
+                    {
+                        MessageBox.Show(_verifyEmailViewModel.LoginMessage);
+                    }
 
-            VerifyEmailWindow verifyEmailWindow = new VerifyEmailWindow();
-            verifyEmailWindow.Show();
-            this.Close();
+                    VerifyEmailWindow verifyEmailWindow = new VerifyEmailWindow();
+                    verifyEmailWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+
+                }
+            }
         }
         private void ReturnBackButton_Click(object sender, RoutedEventArgs e)
         {

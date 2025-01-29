@@ -14,6 +14,7 @@ public class EmailService : IEmailService
     {
         _httpClient = Extensions.CollectionExtensions.GetHttpClient();
     }
+
     public async Task<Response> SendCodeByEmailAsync(string email)
     {
         try

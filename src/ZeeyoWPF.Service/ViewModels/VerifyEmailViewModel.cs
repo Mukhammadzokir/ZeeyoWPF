@@ -1,19 +1,21 @@
-﻿using ZeeyoWPF.Service.Services.Auth;
+﻿using ZeeyoWPF.Service.Properties;
+using ZeeyoWPF.Service.Services.Auth;
 using ZeeyoWPF.Service.Models.EmailModels;
 using ZeeyoWPF.Service.ViewModels.Commons;
-using ZeeyoWPF.Service.Properties;
 
 namespace ZeeyoWPF.Service.ViewModels;
 
 public class VerifyEmailViewModel : BaseViewModel
 {
     private string _code;
-    private string _email;
     private string _loginMessage;
+    private string _emailOrPhoneNumber;
+    private readonly UserService _userService;
     private readonly EmailService _emailService;
 
     public VerifyEmailViewModel()
     {
+        _userService = new UserService();
         _emailService = new EmailService();
     }
 
@@ -27,13 +29,13 @@ public class VerifyEmailViewModel : BaseViewModel
         }
     }
 
-    public string Email
+    public string EmailOrPhoneNumber
     {
-        get => _email;
+        get => _emailOrPhoneNumber;
         set
         {
-            _email = value;
-            OnPropertyChanged(nameof(Email));
+            _emailOrPhoneNumber = value;
+            OnPropertyChanged(nameof(EmailOrPhoneNumber));
         }
     }
 
@@ -47,10 +49,43 @@ public class VerifyEmailViewModel : BaseViewModel
         }
     }
 
+    public async Task<bool> CheckUserAsync()
+    {
+        var emailOrPhoneNumber = EmailOrPhoneNumber;
+        try
+        {
+            var response = await _userService.CheckUserAsync(emailOrPhoneNumber);
+            if(response.Data is false)
+            {
+                LoginMessage = "Please! Enter your email or phone number";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        catch (Exception ex)
+        {
+            LoginMessage = $"Email or phone number failed. Error:  {ex.Message}";
+            return false;
+        }
+    }
+
+    public async Task<string> CheckEmailOrPhoneNumber()
+    {
+        var emailOrPhoneNumber = EmailOrPhoneNumber;
+        if (emailOrPhoneNumber.Contains("+998"))
+            return "phone";
+        else if (emailOrPhoneNumber.Contains(".com") && emailOrPhoneNumber.Contains("@"))
+            return "email";
+        else
+            return "error";
+    }
 
     public async Task<bool> SendCodeByEmailAsync()
     {
-        var email = Email;
+        var email = EmailOrPhoneNumber;
         Settings.Default.Email = email;
         Settings.Default.Save();
         try

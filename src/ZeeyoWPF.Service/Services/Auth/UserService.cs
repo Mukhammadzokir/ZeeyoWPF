@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using ZeeyoWPF.Service.Interfaces.Auth;
 using ZeeyoWPF.Service.Models.Response;
 

@@ -112,7 +112,7 @@ public class VerifyEmailViewModel : BaseViewModel
 
     public async Task<bool> VerifyCodeAsync()
     {
-        var verifyEmailModel = new VerifyEmailModel()
+        var verifyEmailModel = new VerifPhoneNumberModel()
         {
             Code = Code,
             Email = Settings.Default.Email,

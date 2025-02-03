@@ -5,6 +5,6 @@ namespace ZeeyoWPF.Service.Interfaces.Auth;
 
 public interface ISmsService
 {
-    public Task<Response> SendCodeByEmailAsync(string phoneNumber);
+    public Task<Response> SendCodeByPhoneNumberAsync(string phoneNumber);
     public Task<Response> VerifyCodeAsync(VerifyPhoneNumberModel phoneNumberModel);
 }

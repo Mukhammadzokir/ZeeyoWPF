@@ -23,7 +23,7 @@ public class EmailService : IEmailService
 
             var json = JsonConvert.SerializeObject(email);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var message = await _httpClient.PostAsync($"SendCodeByEmails/send-code", content);
+            var message = await _httpClient.PostAsync($"Email/send-code", content);
 
             var jsonString = await message.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<Response>(jsonString);
@@ -44,7 +44,7 @@ public class EmailService : IEmailService
 
             var json = JsonConvert.SerializeObject(emailModel);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-            var message = await _httpClient.PostAsync($"SendCodeByEmails/verify-code", content);
+            var message = await _httpClient.PostAsync($"Email/verify-code", content);
 
             var jsonString = await message.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<Response>(jsonString);

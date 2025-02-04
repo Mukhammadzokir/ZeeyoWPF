@@ -47,8 +47,23 @@ namespace ZeeyoWPF.UI.Windows
                 }
                 else
                 {
-
+                    var result = await _verifyEmailViewModel.SendCodeByPhoneNumberAsync();
+                    if (result)
+                    {
+                        MessageBox.Show(_verifyEmailViewModel.LoginMessage);
+                    }
+                    else
+                    {
+                        MessageBox.Show(_verifyEmailViewModel.LoginMessage);
+                    }
+                    VerifyPhoneNumberWindow verifyPhoneNumberWindow = new VerifyPhoneNumberWindow();
+                    verifyPhoneNumberWindow.Show();
+                    this.Close();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please enter your own email or phone number");
             }
         }
         private void ReturnBackButton_Click(object sender, RoutedEventArgs e)

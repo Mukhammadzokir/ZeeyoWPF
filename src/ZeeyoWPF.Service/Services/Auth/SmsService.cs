@@ -36,7 +36,7 @@ public class SmsService : ISmsService
         }
     }
 
-    public async Task<Response> VerifyCodeAsync(VerifyPhoneNumberModel phoneNumberModel)
+    public async Task<Response> VerifySmsCodeAsync(VerifyPhoneNumberModel phoneNumberModel)
     {
         try
         {

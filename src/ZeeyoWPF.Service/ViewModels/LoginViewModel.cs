@@ -58,12 +58,12 @@ public class LoginViewModel : BaseViewModel
             var response = await _authService.LoginAsync(loginModel);
             if (response.Data != null)
             {
-                LoginMessage = "Login Successfully";
+                LoginMessage = response.Message;
                 return true;
             }
             else
             {
-                LoginMessage = "Login failed. No vailed token was returned.";
+                LoginMessage = response.Message;
                 return false;
             }
         }

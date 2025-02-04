@@ -36,7 +36,7 @@ public class EmailService : IEmailService
         }
     }
 
-    public async Task<Response> VerifyCodeAsync(VerifyEmailModel emailModel)
+    public async Task<Response> VerifyEmailCodeAsync(VerifyEmailModel emailModel)
     {
         try
         {

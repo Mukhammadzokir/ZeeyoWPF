@@ -42,6 +42,10 @@ namespace ZeeyoWPF.UI.Windows
             {
                 MessageBox.Show(_loginViewModel.LoginMessage);
             }
+            else
+            {
+                MessageBox.Show(_loginViewModel.LoginMessage);  
+            }
 
         }
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)

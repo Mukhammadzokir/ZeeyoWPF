@@ -34,5 +34,29 @@ namespace ZeeyoWPF.Service.Properties {
                 this["Email"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string fgfg {
+            get {
+                return ((string)(this["fgfg"]));
+            }
+            set {
+                this["fgfg"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EmailOrNumber {
+            get {
+                return ((string)(this["EmailOrNumber"]));
+            }
+            set {
+                this["EmailOrNumber"] = value;
+            }
+        }
     }
 }

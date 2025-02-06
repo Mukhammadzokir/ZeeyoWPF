@@ -1,0 +1,35 @@
+﻿<Window x:Class="ZeeyoWPF.UI.Windows.Students.StudentWindows.StudentDashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZeeyoWPF.UI.Windows.Students.StudentWindows"
+        mc:Ignorable="d"
+        Title="StudentDashboardWindow" Height="450" Width="800">
+
+    <Grid>
+        <!-- Side Menu -->
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left" Width="180" Background="#1E1E2D">
+                <Button Content="Profile" Style="{StaticResource MaterialDesignFlatButton}" 
+                        Click="ProfileBtn_Clicked" Foreground="White" Margin="0,10"/>
+                <Button Content="Statistika" Style="{StaticResource MaterialDesignFlatButton}" 
+                        Foreground="White" Padding="0"/>
+                <Button Content="Do'kon" Style="{StaticResource MaterialDesignFlatButton}" 
+                        Foreground="White" Padding="0"/>
+                <Button Content="Exit" Style="{StaticResource MaterialDesignFlatButton}" 
+                        Foreground="White" Margin="0,200,0,0"/>
+            </StackPanel>
+            
+            <!-- Main Content -->
+            <Grid Grid.Column="1" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ContentControl Name="MainContent" Grid.Row="1" Margin="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -5,11 +5,11 @@ namespace ZeeyoWPF.Service.ViewModels.Students;
 
 public class StudentViewModel : BaseViewModel
 {
-    private StudentModel _student;
+    private StudentForCreationDto _student;
 
     public StudentViewModel()
     {
-        _student = new StudentModel
+        _student = new StudentForCreationDto
         {
             FirstName = "Muhammadzokir",
             LastName = "Alijonov",

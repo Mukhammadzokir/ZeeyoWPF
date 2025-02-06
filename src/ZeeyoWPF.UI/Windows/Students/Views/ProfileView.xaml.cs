@@ -11,7 +11,7 @@ namespace ZeeyoWPF.UI.Windows.Students.Views
     /// </summary>
     public partial class ProfileView : UserControl
     {
-        public ProfileView(StudentModel student)
+        public ProfileView(StudentForCreationDto student)
         {
             InitializeComponent();
             this.DataContext = new StudentViewModel();

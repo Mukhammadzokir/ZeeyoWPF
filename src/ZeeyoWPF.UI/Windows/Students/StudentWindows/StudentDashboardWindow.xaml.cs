@@ -16,7 +16,7 @@ public partial class StudentDashboardWindow : Window
 
     private void ProfileBtn_Clicked(object sender, RoutedEventArgs e)
     {
-        var studentModel = new StudentModel();
+        var studentModel = new StudentForCreationDto();
         MainContent.Content = new ProfileView(studentModel);
     }
 }

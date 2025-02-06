@@ -1,6 +1,6 @@
 ﻿namespace ZeeyoWPF.Service.Models.StudentModels;
 
-public class StudentModel
+public class StudentForCreationDto
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
